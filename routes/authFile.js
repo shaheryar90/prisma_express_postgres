@@ -1,10 +1,10 @@
 // authController.js
 /**
- * @swagger
- * tags:
- *   name: Authentication
- *   description: Endpoints for user authentication
- */
+//  * @swagger
+//  * tags:
+//  *   name: Authentication
+//  *   description: Endpoints for user authentication
+//  */
 
 /**
  * @swagger
@@ -12,7 +12,9 @@
  *   post:
  *     summary: Register a new user
  *     description: Registers a new user with the provided information.
- *
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -48,6 +50,9 @@
  *     summary: Uploads a file.
  *     consumes:
  *       - multipart/form-data
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *
  *     requestBody:
  *       content:
@@ -58,6 +63,7 @@
  *               image:
  *                 type: string
  *                 format: binary
+ *
  *     responses:
  *       '201':
  *         description: Image uploaded successfully
@@ -71,6 +77,9 @@
  *   post:
  *     summary: User login
  *     description: Logs in a user with email and password.
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -97,6 +106,9 @@
  *   post:
  *     summary: Forgot password
  *     description: Sends a verification code to reset the password.
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -121,6 +133,9 @@
  *   post:
  *     summary: Verify reset token
  *     description: Verifies the reset token sent to the user's email.
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -147,6 +162,9 @@
  *   post:
  *     summary: Reset password
  *     description: Resets user password with a verification code.
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
