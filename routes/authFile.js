@@ -45,10 +45,11 @@
  * @swagger
  * /auth/uploadImage:
  *   post:
- *     summary: Upload user image
- *     description: Uploads an image for the user profile.
+ *     summary: Uploads a file.
+ *     consumes:
+ *       - multipart/form-data
+ *
  *     requestBody:
- *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
@@ -56,6 +57,7 @@
  *             properties:
  *               image:
  *                 type: string
+ *                 format: binary
  *     responses:
  *       '201':
  *         description: Image uploaded successfully
