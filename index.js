@@ -32,7 +32,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3001/dev/practice_project/api/v1",
+        url: `http://localhost:${process.env.PORT}/dev/practice_project/api/v1`,
       },
     ],
   },
@@ -48,11 +48,13 @@ app.get("/test", (req, res) => {
   }
 });
 
-const port = 3001;
+const port = process.env.PORT;
 //For Dev http
+
+console.log(port, "qqqqqqqqqqqqqq");
 
 app.listen(port, () =>
   console.log(
-    `Listening on port: ${port}, and the environment is: $"{process.env.NODE_ENV"}`
+    `Listening on port: ${port}, and the environment is: ${process.env.NODE_ENV}`
   )
 );

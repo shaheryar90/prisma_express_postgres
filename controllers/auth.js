@@ -1,8 +1,8 @@
 const Response = require("../utils/Response");
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const Mailer = require("../services/Mailer");
+const jwt = require("../utils/jwt");
 const prisma = new PrismaClient();
 
 module.exports = {
@@ -90,18 +90,17 @@ module.exports = {
       }
 
       // Generate JWT token
-      const token = jwt.sign({ userId: user.id }, "your_secret_key", {
-        expiresIn: "1h",
-      });
+      const token = jwt.createToken(user);
 
       const updatedUser = {
         ...user,
         token,
       };
-      delete updatedUser?.["password"];
+      delete updatedUser["password"];
       // Send token to the client
       return res
         .status(200)
+        .header("x-auth-token", token)
         .send(Response.success(200, updatedUser, "Login successful"));
     } catch (error) {
       console.error("Login error:", error);

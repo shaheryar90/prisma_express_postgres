@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn db:sync && node index.js",
+    "start": "yarn db:sync && nodemon index.js",
     "db:sync": "prisma db push"
   },
   "keywords": [],
